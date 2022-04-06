@@ -64,8 +64,14 @@ def values():
 
     global age
     age = float(entry4.get())
-
-    Prediction_result = ('  Predicted Result: ', clf.predict([[gmat, gpa, work_experience, age]]))
+    a = clf.predict([[gmat, gpa, work_experience, age]])
+    if a == 2:
+        b = "Candidate is admitted"
+    elif a == 1:
+        b = "Candidate is on the waiting list"
+    else:
+        b = "Candidate is not admitted"
+    Prediction_result = ('  Predicted Result: ',a, b)
     label_Prediction = tk.Label(root, text=Prediction_result, bg='sky blue')
     canvas1.create_window(270, 280, window=label_Prediction)
 
